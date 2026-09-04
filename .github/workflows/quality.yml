@@ -39,6 +39,7 @@ jobs:
         run: |
           python3 scripts/audit_library_academies.py --strict
           python3 scripts/audit_curriculum.py --strict
+          python3 scripts/audit_learning_system.py
       - name: Execute dependency-free learning notebooks
         run: python3 scripts/execute_notebooks.py
       - name: Run validator tests

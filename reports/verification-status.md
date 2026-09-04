@@ -20,11 +20,15 @@ must be updated before a stable release claim.
 - `python3 scripts/audit_curriculum.py --strict`: 17/17 concept tracks satisfy
   substantive guide, metadata lesson, executable project/tests, separated
   solution, and scored stage assessment evidence.
+- `python3 scripts/audit_learning_system.py`: all 12 cross-cutting blueprint
+  requirements pass, including the 14-step project ladder, 17-stage assessment
+  index, graduation rubric, references, dataset practice, reproducibility, and
+  contributor surfaces.
 - `python3 scripts/run_contract_tests.py`: 36/36 dependency-free suites pass
   with warnings treated as errors—17 curriculum projects and 19 academy
   contracts, totaling 82 tests. Its manifest is tested against the complete
   curriculum directory set.
-- `python3 -m unittest discover -s tests -v`: twenty validator/runner tests pass.
+- `python3 -m unittest discover -s tests -v`: twenty-three validator/runner tests pass.
 - `python3 scripts/audit_release_readiness.py` validates the structured release
   evidence ledger and currently reports every missing remote-run, independent-
   review, and per-academy learner-journey gate. Its `--strict` mode is reserved

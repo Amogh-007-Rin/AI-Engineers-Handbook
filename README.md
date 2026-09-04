@@ -26,6 +26,7 @@
 <p align="center">
   <a href="#-start-learning"><strong>Start learning</strong></a> ·
   <a href="#-curriculum-map"><strong>Explore curriculum</strong></a> ·
+  <a href="projects/README.md"><strong>Build projects</strong></a> ·
   <a href="Libraries/CATALOG.md"><strong>Browse 60 academies</strong></a> ·
   <a href="#-contributing"><strong>Contribute</strong></a>
 </p>
@@ -68,6 +69,11 @@ produce evidence that another person can review.
 - **10 specializations** covering ML, deep learning, research, NLP/LLMs, vision,
   GenAI/agents, RL, MLOps, data-centric AI, and responsible AI.
 - **Runnable projects and tests** with separate solutions and scored assessments.
+- **A 14-step project ladder** and a transparent
+  [graduation rubric](assessments/graduation-rubric.md).
+- **Shared references** for [AI terminology](references/glossary.md),
+  [dataset practice](datasets/README.md), and
+  [reproducibility](shared/reproducibility-checklist.md).
 - **Dependency-free notebooks** for short executable learning checks.
 - **A production capstone** spanning data, modeling, serving, operations, safety,
   documentation, and defense.
@@ -91,11 +97,13 @@ simpler alternatives, and request review of finished projects.
 
 1. Read [How to learn with this handbook](curriculum/foundations/00-orientation/README.md).
 2. Select an entry point from the [curriculum map](curriculum/README.md).
-3. Complete the lesson, exercises, project, tests, and assessment for each slice.
+3. Complete the lesson, exercises, project, tests, and assessment for each slice;
+   use the [assessment index](assessments/README.md) to preserve evidence.
 4. Use the [library catalog](Libraries/CATALOG.md) when a project introduces a
    tool you need to study more deeply.
 5. Choose a [specialization](specializations/README.md) after the common core.
-6. Finish with the [production AI capstone](projects/capstone/README.md).
+6. Follow the [project ladder](projects/README.md) and finish with the
+   [production AI capstone](projects/capstone/README.md).
 
 If you are unsure where to begin, follow orientation → foundations → mathematics
 → data → machine learning → deep learning.
