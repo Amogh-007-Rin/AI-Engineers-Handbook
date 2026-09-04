@@ -27,6 +27,7 @@ ADDITIONAL_LABS = [
     ("curriculum/foundations/orientation-lab", ROOT / "curriculum" / "foundations" / "00-orientation" / "lab"),
     ("curriculum/foundations/python-lab", ROOT / "curriculum" / "foundations" / "01-python-foundations" / "lab"),
     ("curriculum/mathematics/linear-algebra-lab", ROOT / "curriculum" / "mathematics" / "01-linear-algebra" / "lab"),
+    ("curriculum/data/data-quality-lab", ROOT / "curriculum" / "data" / "01-data-quality" / "lab"),
 ]
 
 
