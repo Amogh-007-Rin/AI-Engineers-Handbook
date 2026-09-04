@@ -30,7 +30,9 @@ jobs:
           python3 -m pip install -r Libraries/Optuna/environment/requirements.txt
           python3 -m pip install -r Libraries/ARIMA-SARIMA/environment/requirements.txt
       - name: Validate content and curriculum graph
-        run: python3 scripts/validate_content.py
+        run: |
+          python3 scripts/validate_content.py
+          python3 scripts/audit_lesson_contracts.py
       - name: Validate release evidence ledger
         run: python3 scripts/audit_release_readiness.py
       - name: Scan repository hygiene and secrets

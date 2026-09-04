@@ -25,6 +25,7 @@ Run these from the repository root:
 
 ```bash
 python3 scripts/validate_content.py
+python3 scripts/audit_lesson_contracts.py
 python3 scripts/audit_library_academies.py --strict
 python3 scripts/audit_curriculum.py --strict
 python3 scripts/audit_learning_system.py

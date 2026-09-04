@@ -27,6 +27,8 @@ about values, state, interfaces, failure, and evidence—not memorizing every
 built-in function. This lesson needs Python 3.10 or newer, a terminal, and this
 repository. The core path is dependency-free, offline, CPU-only, under 50 MB of
 RAM, and normally completes in twelve hours including exercises and the project.
+All essential distinctions are stated in text and code rather than color alone;
+the command-line lab output is compatible with a screen reader and plain text.
 
 ## Outcomes and evidence
 
