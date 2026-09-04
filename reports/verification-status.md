@@ -30,6 +30,11 @@ must be updated before a stable release claim.
   native project tests pass with warnings treated as errors. This clean run
   found and fixed a Seaborn/Matplotlib pending-deprecation boundary before the
   final rerun. The environment is disposable and is not release source.
+- Fresh isolated environment `/tmp/handbook-jax-env` on CPython 3.14 installed
+  the declared CPU JAX, Keras, and Flax requirements with no cache reuse. All
+  six native tests pass with warnings treated as errors, covering finite-
+  difference gradients, seeded training, native Keras serialization, and Flax
+  state round trips.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
