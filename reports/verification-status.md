@@ -35,6 +35,15 @@ must be updated before a stable release claim.
   six native tests pass with warnings treated as errors, covering finite-
   difference gradients, seeded training, native Keras serialization, and Flax
   state round trips.
+- Fresh isolated CPU-only PyTorch environment on CPython 3.14 installed from
+  the official PyTorch CPU index. Both native tests pass warning-clean on
+  PyTorch 2.14.0+cpu and NumPy 2.5.2, covering seeded training and state-dict
+  serialization. The run exposed and fixed a missing NumPy environment
+  dependency.
+- TensorFlow CPU installation was attempted in a fresh CPython 3.14 environment
+  and correctly failed with no compatible `tensorflow-cpu` distribution. Its
+  declared reference and CI runtime remains CPython 3.12; this local result is
+  compatibility-boundary evidence, not a passing TensorFlow execution.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
