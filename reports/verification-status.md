@@ -24,9 +24,9 @@ must be updated before a stable release claim.
   requirements pass, including the 14-step project ladder, 17-stage assessment
   index, graduation rubric, references, dataset practice, reproducibility, and
   contributor surfaces.
-- `python3 scripts/run_contract_tests.py`: 37/37 dependency-free suites pass
-  with warnings treated as errors—17 curriculum projects, the orientation lab,
-  and 19 academy contracts, totaling 86 tests. Its manifest is tested against
+- `python3 scripts/run_contract_tests.py`: 38/38 dependency-free suites pass
+  with warnings treated as errors—17 curriculum projects, two foundations labs,
+  and 19 academy contracts, totaling 92 tests. Its manifest is tested against
   the complete curriculum directory set.
 - `python3 -m unittest discover -s tests -v`: twenty-three validator/runner tests pass.
 - `python3 scripts/audit_release_readiness.py` validates the structured release

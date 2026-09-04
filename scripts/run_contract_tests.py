@@ -25,6 +25,7 @@ ACADEMIES = [
 
 ADDITIONAL_LABS = [
     ("curriculum/foundations/orientation-lab", ROOT / "curriculum" / "foundations" / "00-orientation" / "lab"),
+    ("curriculum/foundations/python-lab", ROOT / "curriculum" / "foundations" / "01-python-foundations" / "lab"),
 ]
 
 
