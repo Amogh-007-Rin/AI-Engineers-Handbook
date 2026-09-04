@@ -1,4 +1,4 @@
-# Reference runtime: CPython 3.12 (the authoring wheel is not guaranteed on 3.14).
+# Reference CI runtime: CPython 3.12; CPython 3.14 is clean-run verified with ONNX 1.22.
 onnx>=1.17,<2
 onnxruntime>=1.20,<2
 numpy>=2,<3

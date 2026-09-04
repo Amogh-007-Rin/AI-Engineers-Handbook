@@ -50,6 +50,12 @@ must be updated before a stable release claim.
   seeded reproducibility, training quality, native serialization, forecast
   horizons, and trend behavior. The run also identified and fixed Prophet's
   writable Matplotlib configuration boundary.
+- Fresh isolated CPython 3.14 ONNX environment installed ONNX 1.22.0, ONNX
+  Runtime 1.29.0, and NumPy 2.5.2 with no cache reuse. Both native differential
+  inference/dynamic-batch and file-round-trip tests pass warning-clean at the
+  Python level. ONNX Runtime logs a non-fatal native warning when it cannot
+  persist its anonymous telemetry device ID under the managed read-only home;
+  inference falls back to an in-memory identifier.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
