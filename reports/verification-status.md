@@ -73,6 +73,17 @@ must be updated before a stable release claim.
   fixed Albumentations' import-time network update check and a NetworkX 3.6
   node-link serialization-key drift; both contracts are now explicit and
   offline-safe.
+- Fresh isolated CPython 3.14 CPU PyTorch domain environment installed
+  Transformers 4.57.6, Diffusers 0.39.0, SentenceTransformers 3.4.1, PyTorch
+  Geometric 2.8.0.post1, and Stable-Baselines3 2.9.0 over PyTorch 2.14.0+cpu.
+  The three Hugging Face academies pass all six native tests warning-clean and
+  offline without pretrained downloads. Stable-Baselines3 passes three tests,
+  including a newly added real seeded PPO train/predict lifecycle rather than
+  only a configuration mock.
+- Both PyTorch Geometric graph batching tests pass functionally on CPython
+  3.14. Its import emits PyTorch's documented `torch.jit.script` Python 3.14
+  `FutureWarning`, so this is not warning-clean evidence; the strict academy
+  reference remains the isolated Python 3.12 domain-framework workflow.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
