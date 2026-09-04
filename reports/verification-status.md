@@ -24,15 +24,16 @@ must be updated before a stable release claim.
   requirements pass, including the 14-step project ladder, 17-stage assessment
   index, graduation rubric, references, dataset practice, reproducibility, and
   contributor surfaces.
-- `python3 scripts/run_contract_tests.py`: 41/41 dependency-free suites pass
-  with warnings treated as errors—17 curriculum projects, five core learning
-  labs, and 19 academy contracts, totaling 116 tests. Its manifest is tested
+- `python3 scripts/run_contract_tests.py`: 42/42 dependency-free suites pass
+  with warnings treated as errors—17 curriculum projects, six core learning
+  labs, and 19 academy contracts, totaling 124 tests. Its manifest is tested
   against the complete curriculum directory set.
 - `python3 -m unittest discover -s tests -v`: twenty-six validator/runner tests pass.
-- `python3 scripts/audit_lesson_contracts.py`: 5/30 canonical curriculum lessons
+- `python3 scripts/audit_lesson_contracts.py`: 6/30 canonical curriculum lessons
   currently satisfy the full authored lesson contract. Orientation, Python
-  foundations, linear algebra, data quality, and ML evaluation pass; the command
-  intentionally remains non-strict in CI while the other 25 are upgraded, and `--strict` is the
+  foundations, linear algebra, data quality, ML evaluation, and preprocessing
+  pass; the command intentionally remains non-strict in CI while the other 24
+  are upgraded, and `--strict` is the
   release gate.
 - `python3 scripts/audit_release_readiness.py` validates the structured release
   evidence ledger and currently reports every missing remote-run, independent-
@@ -144,7 +145,7 @@ commit and run URL here before marking a release stable.
 
 ## Still required for a stable world-class release
 
-- Upgrade the remaining 25 canonical curriculum lessons reported by
+- Upgrade the remaining 24 canonical curriculum lessons reported by
   `scripts/audit_lesson_contracts.py` with authored depth, runnable tested labs,
   worked examples, failures, exercises, knowledge checks, completion evidence,
   compute/accessibility guidance, and primary readings.

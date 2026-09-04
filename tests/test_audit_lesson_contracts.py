@@ -20,6 +20,7 @@ class LessonContractAuditTests(unittest.TestCase):
             "mathematics/01-linear-algebra/README.md",
             "data/01-data-quality/README.md",
             "machine-learning/01-evaluation/README.md",
+            "machine-learning/02-preprocessing/README.md",
         ):
             with self.subTest(relative=relative):
                 self.assertTrue(all(MODULE.evidence(root / relative).values()))
