@@ -1,0 +1,5 @@
+# NetworkX graph contract project
+
+Construct a validated weighted graph, compute stable node features, and verify
+JSON schema round-trip. Run `python -W error -m unittest -v`; extend it with
+directed and disconnected fixtures plus a graph-aware train/test split.

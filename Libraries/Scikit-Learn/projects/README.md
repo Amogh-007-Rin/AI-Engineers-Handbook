@@ -1,0 +1,3 @@
+# Scikit-Learn leakage-safe pipeline project
+
+Run `python3 -m unittest -v test_pipeline.py`. Replace the fixture with a small open dataset and retain a grouped or temporal split. Compare dummy, linear, and nonlinear candidates inside identical pipelines; tune only inside training data; report uncertainty, calibration, threshold costs, transformed feature names, slices, and inspected errors. Persist and reload the complete pipeline in a trusted environment, then test reordered, missing, extra, unknown, and out-of-range inputs. Passing requires 80/100 with no preprocessing leakage or test-set selection.

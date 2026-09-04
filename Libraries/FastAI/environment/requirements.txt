@@ -1,0 +1,3 @@
+# Reference runtime: CPython 3.12, CPU.
+fastai>=2.8,<2.9
+pandas>=2.2,<3

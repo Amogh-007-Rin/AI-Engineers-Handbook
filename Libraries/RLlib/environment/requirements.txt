@@ -1,0 +1,2 @@
+ray[rllib]>=2.30,<3
+gymnasium>=1,<2

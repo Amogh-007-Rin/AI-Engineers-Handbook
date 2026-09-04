@@ -1,0 +1,2 @@
+# Install mmdet/mmengine/mmcv from the official compatibility matrix for the target PyTorch/CUDA runtime.
+torch>=2.4,<3

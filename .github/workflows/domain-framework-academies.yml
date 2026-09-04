@@ -1,0 +1,38 @@
+name: Domain framework academy tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 3"
+
+permissions:
+  contents: read
+
+jobs:
+  framework:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        academy:
+          - HuggingFace Transformers
+          - SentenceTransformers
+          - HuggingFace Diffusers
+          - DGL
+          - PyTorch Geometric
+          - PettingZoo
+          - RLlib
+          - Stable-Baselines3
+          - DeepFace
+          - Ultralytics YOLO
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install isolated academy environment
+        run: python -m pip install -r "Libraries/${{ matrix.academy }}/environment/requirements.txt"
+      - name: Run academy project tests
+        run: python -W error -m unittest discover -s "Libraries/${{ matrix.academy }}/projects" -v

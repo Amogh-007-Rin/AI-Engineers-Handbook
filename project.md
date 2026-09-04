@@ -35,12 +35,13 @@ The project will not:
 
 ## 2. Learning Model
 
-The handbook will use four connected layers:
+The handbook will use five connected layers:
 
 1. **Curriculum:** A prerequisite-driven beginner-to-advanced path.
 2. **Specializations:** Advanced role- and domain-focused study after the common core.
 3. **Practice and assessment:** Exercises, labs, projects, examinations, paper reproductions, and a capstone.
-4. **Reference:** Concise, searchable guides for libraries, frameworks, terminology, and operational tasks.
+4. **Library academies:** Standalone basic-to-advanced learning paths for every tool in `Libraries/`.
+5. **Reference:** Concise, searchable guides for terminology and operational tasks.
 
 Every curriculum stage follows the same learning loop:
 
@@ -72,13 +73,14 @@ AI-Engineers-Handbook/
 ├── specializations/          # Advanced role and domain paths
 ├── projects/                 # Integrated, progressively independent work
 ├── assessments/              # Knowledge checks, exams, rubrics, solutions
+├── Libraries/                # Basic-to-advanced library academies
 ├── references/               # Tool and concept reference material
 ├── datasets/                 # Dataset cards and download helpers, not large data
 ├── shared/                   # Reusable code, diagrams, templates, and glossary
 └── contributing/             # Authoring, review, governance, and maintenance
 ```
 
-All new paths use lowercase kebab-case. Directory entry points use `README.md`. The existing tool folders remain in place until they are audited and migrated; they must not be mass-deleted or replaced with another set of placeholders.
+All new curriculum paths use lowercase kebab-case. Directory entry points use `README.md`. Existing names under `Libraries/` remain stable during the first content pass to avoid disruptive bulk renames; a later migration may normalize them with redirects. The library folders must not be mass-deleted or replaced with another set of placeholders.
 
 The root README will eventually provide:
 
@@ -329,7 +331,173 @@ PyTorch, TensorFlow, and JAX are equal first-class frameworks in the deep-learni
 
 Framework parity applies to core competencies, not identical page or line counts.
 
-## 8. Compute and Environment Policy
+## 8. Library Academies
+
+The `Libraries/` module will provide a complete, independent learning path for every included library, framework, platform, or method. These paths complement the concept-first curriculum: the curriculum answers **what to learn and why**, while a library academy teaches **how to use one tool well from first contact through production practice**.
+
+All 60 current library/tool/method entries are in scope:
+
+- **Data, scientific computing, and visualization:** NumPy, Pandas, SciPy, Statsmodels, Polars, DuckDB, Dask, PySpark, Matplotlib, Seaborn, Plotly, Bokeh, Dash, and NetworkX.
+- **Classical ML, optimization, and forecasting:** Scikit-Learn, XGBoost, LightGBM, CatBoost, PyCaret, Optuna, Prophet, Orbit, and ARIMA-SARIMA.
+- **Deep learning and interoperability:** PyTorch, TensorFlow, Keras, JAX, Flax, FastAI, ONNX, PyTorch Geometric, and DGL.
+- **NLP, generative AI, and conversational systems:** NLTK, spaCy, Gensim, SentenceTransformers, HuggingFace Transformers, HuggingFace Diffusers, OpenAI SDK, and Rasa.
+- **Computer vision:** OpenCV, Albumentations, Ultralytics YOLO, MMDetection, Detectron2, and DeepFace.
+- **Reinforcement learning:** Gymnasium, Stable-Baselines3, RLlib, and PettingZoo.
+- **Production, orchestration, and MLOps:** FastAPI, MLflow, Weights & Biases, BentoML, TensorFlow Serving, TorchServe, Ray, Airflow, Docker, and Kubernetes.
+
+`Z-Roadmap` is migration material rather than a library academy and will become part of the generated curriculum roadmap. `ARIMA-SARIMA` is a technique-focused academy; it follows the same learning contract but does not pretend to be a software library.
+
+### 8.1 Standard academy structure
+
+Every library folder will converge on this structure, omitting only files that genuinely do not apply:
+
+```text
+Libraries/<Library Name>/
+├── README.md                 # Overview, prerequisites, map, and progress checklist
+├── 00-setup/
+├── 01-fundamentals/
+├── 02-core-workflows/
+├── 03-intermediate/
+├── 04-advanced/
+├── 05-production/
+├── 06-internals/             # Architecture/performance internals where useful
+├── cookbook/                 # Focused, searchable recipes
+├── projects/                 # Guided and independent projects
+├── assessments/              # Checks, exercises, rubrics, and separated solutions
+├── troubleshooting/          # Common errors, diagnostics, and compatibility notes
+└── environment/              # Pinned requirements and reproducibility instructions
+```
+
+Small or narrow tools may combine adjacent levels, but they must preserve the same learning progression and exit criteria. Large ecosystems may add domain tracks beneath a level. Empty directories will not be committed merely to match the template.
+
+### 8.2 Required learning progression
+
+Each academy teaches the following progression:
+
+1. **Orientation and setup**
+   - What the tool is, when to use it, when not to use it, alternatives, prerequisites, installation, environment verification, and a five-minute first success.
+2. **Fundamentals**
+   - Mental model, core abstractions, essential API surface, data structures, lifecycle, and small worked examples.
+3. **Core workflows**
+   - The common end-to-end tasks practitioners perform, with realistic data and tests rather than disconnected syntax demonstrations.
+4. **Intermediate practice**
+   - Composition, configuration, reusable components, evaluation, debugging, serialization, integrations, and common design patterns.
+5. **Advanced practice**
+   - Customization, extension APIs, scaling, profiling, optimization, distributed or accelerator use where relevant, and non-obvious failure modes.
+6. **Production use**
+   - Testing, reproducibility, observability, security, deployment, versioning, performance, cost, migration, and operational troubleshooting as applicable.
+7. **Internals and expert judgment**
+   - Architecture, execution model, tradeoffs, limitations, source-code navigation, contribution workflow, and selecting the tool against credible alternatives.
+8. **Mastery evidence**
+   - Knowledge checks, implementation exercises, one guided project, one independent project, and an exit assessment mapped to stated outcomes.
+
+### 8.3 Academy README contract
+
+Each `Libraries/<Library Name>/README.md` becomes the academy landing page and must include:
+
+- Purpose, current support status, audience, prerequisites, and estimated study time.
+- Version and environment policy, installation verification, and compute requirements.
+- A basic-to-advanced module map with links and progress checkboxes.
+- Learning outcomes for foundation, practitioner, and advanced completion levels.
+- “Use it when / avoid it when” guidance and a comparison with realistic alternatives.
+- Links into relevant concept-first curriculum lessons and upstream official documentation.
+- Project and assessment requirements.
+- Known compatibility, security, licensing, and maintenance notes.
+- `last_verified` metadata and the owners/reviewers responsible for maintenance.
+
+The README is navigation and orientation, not a single oversized tutorial. Substantive teaching belongs in focused lessons and runnable artifacts.
+
+### 8.4 Library lesson contract
+
+Library lessons follow the global lesson contract and additionally require:
+
+- A pinned, documented version or supported version range.
+- Expected output and an executable verification step.
+- Explanation of the underlying concept, not only copy-paste API calls.
+- At least one misuse, failure mode, or debugging example.
+- Links to the exact upstream documentation relevant to the lesson.
+- A note separating stable concepts from version-sensitive syntax.
+- Tests for reusable code and clean notebook execution for exploratory material.
+- A migration note when the recommended API changed across supported versions.
+
+Generated API inventories are allowed as supplements but cannot replace authored explanations, workflows, or exercises.
+
+### 8.5 Tailoring by library family
+
+The common template will be adapted rather than applied mechanically:
+
+- **Data and visualization tools:** emphasize data models, indexing, correctness, missing data, performance, memory, interoperability, and truthful visual communication.
+- **ML libraries:** emphasize problem framing, pipelines, leakage prevention, evaluation, tuning, interpretability, persistence, and reproducibility.
+- **Deep-learning frameworks:** emphasize tensors, autodiff, modules, input pipelines, training loops, distributed execution, compilation, profiling, export, and debugging.
+- **NLP/CV/RL libraries:** emphasize domain data formats, preprocessing, pretrained assets, task metrics, fine-tuning, failure analysis, and domain-specific risks.
+- **Serving and MLOps tools:** emphasize lifecycle, configuration, local-to-production workflow, observability, reliability, security, upgrades, rollback, and incident handling.
+- **Infrastructure tools:** teach only the subset required for robust AI systems before advanced platform administration.
+- **Hosted SDKs:** isolate provider-specific material, mock network calls in core tests, teach cost and privacy controls, and never require learner-owned paid credentials.
+
+### 8.6 Projects and assessments
+
+Each academy includes at minimum:
+
+- A quick-start exercise that proves the environment works.
+- Short checks after each level.
+- Debugging tasks based on realistic mistakes.
+- A guided project that demonstrates the canonical workflow.
+- An independent project with a public rubric and multiple valid solutions.
+- A final practical assessment covering selection, implementation, debugging, performance, and tradeoff reasoning.
+
+Projects should connect across libraries when that reflects real practice—for example, Pandas → Scikit-Learn → MLflow → FastAPI → Docker—but each academy must state precisely which competencies it owns and which it reuses.
+
+### 8.7 Completion levels
+
+Library progress is reported using evidence-based levels:
+
+- **Foundation:** Can install the tool, explain its mental model, and complete essential tasks with documentation.
+- **Practitioner:** Can build reliable end-to-end workflows, test them, debug common failures, and choose appropriate APIs.
+- **Advanced:** Can optimize, extend, integrate, and operate the tool while explaining tradeoffs and limitations.
+- **Maintainer-ready:** Optional level for reading source, diagnosing internals, contributing fixes, and managing upgrades; it is not required for handbook graduation.
+
+Completion badges, if introduced, must link to assessment evidence and must not be awarded for page views.
+
+### 8.8 Development waves
+
+Library academies will be authored in dependency-aware waves, with each selected academy completed vertically before the next wave expands:
+
+1. **Core foundation:** NumPy, Pandas, Matplotlib, Seaborn, SciPy, Statsmodels, Polars, DuckDB, and FastAPI.
+2. **Classical ML:** Scikit-Learn, XGBoost, LightGBM, CatBoost, Optuna, PyCaret, ARIMA-SARIMA, Prophet, and Orbit.
+3. **Deep learning:** PyTorch, TensorFlow, Keras, JAX, Flax, FastAI, and ONNX.
+4. **Domain AI:** OpenCV, Albumentations, Transformers, Diffusers, NLTK, spaCy, Gensim, SentenceTransformers, PyTorch Geometric, DGL, and NetworkX.
+5. **Specialized systems:** YOLO, MMDetection, Detectron2, DeepFace, Rasa, Gymnasium, Stable-Baselines3, RLlib, and PettingZoo.
+6. **Scale and production:** MLflow, Weights & Biases, BentoML, TensorFlow Serving, TorchServe, Ray, Dask, PySpark, Airflow, Docker, Kubernetes, Dash, Bokeh, Plotly, and OpenAI SDK.
+
+Wave membership controls authoring order, not learner difficulty in every case. Security-sensitive or fast-changing SDK content receives a shorter verification interval.
+
+### 8.9 Library academy definition of done
+
+The final evidence gate is executable:
+
+```bash
+python3 scripts/audit_library_academies.py --strict
+```
+
+It requires every academy to contain a navigation guide, metadata-bearing
+lesson, exercises, executable project, project tests, solution, scored
+assessment, and reproducible environment. The non-strict report supports work
+in progress; only the strict report supports a completion claim.
+
+An academy is complete only when:
+
+- Its README contract and all mandatory progression levels are satisfied.
+- Every published lesson has valid metadata, working links, citations, and version notes.
+- Core examples and notebooks execute in a clean, pinned environment.
+- Exercises, guided project, independent project, assessment, rubrics, and separated solutions are present.
+- CPU/free-tier requirements are documented and verified.
+- The academy links to prerequisite concepts without needlessly duplicating curriculum content.
+- Security, licensing, accessibility, and responsible-use checks are complete.
+- At least one foundation-level and one practitioner-level learner journey has been tested.
+- A domain reviewer approves technical depth and a second reviewer approves pedagogy.
+- CI passes and ongoing ownership is assigned.
+
+## 9. Compute and Environment Policy
 
 - Every core exercise must run on a normal CPU or a free hosted GPU within a documented time limit.
 - Paid compute, multi-GPU training, and proprietary services are optional extensions.
@@ -338,7 +506,7 @@ Framework parity applies to core competencies, not identical page or line counts
 - Environments are pinned and reproducible. Secrets are loaded through documented environment mechanisms and never committed.
 - Large datasets, checkpoints, and generated artifacts are downloaded or stored externally with checksums and licenses.
 
-## 9. Assessment System
+## 10. Assessment System
 
 Assessment is layered rather than dependent on a single examination:
 
@@ -364,7 +532,7 @@ Rubrics score:
 
 Every assessment publishes pass criteria, expected evidence, common failure modes, and remediation. Learners may revise and resubmit; mastery matters more than first-attempt performance.
 
-## 10. Project Ladder
+## 11. Project Ladder
 
 Projects become progressively less guided:
 
@@ -385,7 +553,7 @@ Projects become progressively less guided:
 
 The capstone requires a proposal, stakeholder and risk analysis, architecture decision record, reproducible repository, data and model cards, tests, offline and online evaluation plan, deployment, monitoring, threat model, cost analysis, demo, operations runbook, and retrospective.
 
-## 11. Editorial Quality and Governance
+## 12. Editorial Quality and Governance
 
 ### Source policy
 
@@ -416,7 +584,7 @@ Domain maintainers own reviews and maintenance. `CODEOWNERS` or an equivalent ow
 - Label issues for content gaps, beginner friction, correctness, stale material, accessibility, reproducibility, licensing, and security.
 - Use learner feedback and assessment failure patterns to prioritize improvements.
 
-## 12. Automation and Quality Gates
+## 13. Automation and Quality Gates
 
 Automation will be introduced incrementally and will eventually check:
 
@@ -432,23 +600,23 @@ Automation will be introduced incrementally and will eventually check:
 
 Pull-request checks must be CPU-compatible and reasonably fast. Expensive integrations and accelerator tests run on a schedule or through explicitly triggered workflows. CI must never require contributor-owned cloud credentials.
 
-## 13. Current Repository Migration
+## 14. Current Repository Migration
 
-The current repository is a useful topic inventory but not yet a curriculum. Most of its 59 library folders contain the same short placeholder index, the FastAPI course path is an empty tracked file, and the PDF roadmap sequences tools without lessons or mastery gates.
+The current repository is a useful topic inventory but not yet a curriculum. Most of its 60 library/tool/method folders contain the same short placeholder index, the FastAPI course path is an empty tracked file, and the PDF roadmap sequences tools without lessons or mastery gates.
 
 Migration will therefore proceed deliberately:
 
-1. Inventory every existing folder as curriculum material, reference material, duplicate, outdated, or unsupported.
-2. Map valid topics to the competency-based curriculum.
-3. Move tool-specific explanations into `references/` when their corresponding curriculum need is implemented.
-4. Replace placeholder pages only with reviewed, useful content—never with a larger empty scaffold.
+1. Inventory every existing folder by category, prerequisites, curriculum relationships, support status, and maintenance risk.
+2. Map every academy to the competency-based curriculum and its dependency wave.
+3. Keep substantial tool learning resources in `Libraries/`; use `references/` only for concise cross-cutting lookup material.
+4. Replace placeholder pages with one complete academy at a time—never with a larger empty scaffold.
 5. Correct the FastAPI path and integrate it into production-serving lessons during the relevant milestone.
 6. Rebuild the PDF roadmap as maintainable Markdown generated from curriculum metadata.
 7. Update the root README after the first complete vertical slice can give learners a working “Start here” experience.
 8. Preserve inbound links with migration notes or redirects where the hosting platform permits them.
 9. Remove obsolete paths only after content migration and link validation.
 
-## 14. Vertical Delivery Milestones
+## 15. Vertical Delivery Milestones
 
 Development ships complete learn-practice-assess slices. A milestone is complete only when its lessons, labs, assessments, solutions, navigation, CI checks, and high-priority learner-feedback fixes are present.
 
@@ -459,6 +627,8 @@ Development ships complete learn-practice-assess slices. A milestone is complete
 - Implement the metadata schema and curriculum graph validator.
 - Add baseline Markdown, link, secret, and Python checks.
 - Audit existing content and create the migration inventory.
+- Ratify the library academy template, metadata extension, version-support policy, and definition of done.
+- Select the first foundation academies and map their lessons to Stages 1–3.
 - Establish a lightweight learner-testing process and definition of done.
 
 ### Milestone 1 — Beginner-ready foundation
@@ -466,6 +636,7 @@ Development ships complete learn-practice-assess slices. A milestone is complete
 - Deliver orientation, environment setup, Python, terminal, Git, SQL, software engineering, math essentials, and data fundamentals.
 - Add placement diagnostics, glossary, troubleshooting, progress tracking, and beginner navigation.
 - Publish the first knowledge checks, practical exams, solutions, and portfolio project.
+- Publish the first complete library academies needed by this path, beginning with NumPy and Pandas, without duplicating shared theory.
 - Validate the entire route with fresh learners before expanding it.
 
 ### Milestone 2 — Classical machine learning
@@ -505,9 +676,21 @@ Development ships complete learn-practice-assess slices. A milestone is complete
 - Sample-test free-GPU paths and scheduled framework suites.
 - Audit accessibility, citations, licensing, secrets, dependencies, and security.
 - Verify all published content and resolve high-severity learner feedback.
+- Complete and review all 60 library academies or explicitly mark unsupported tools with a documented replacement/migration decision.
 - Publish a versioned stable release and maintenance schedule.
 
-## 15. Milestone Definition of Done
+## 16. Milestone Definition of Done
+
+The curriculum-wide structural gate is:
+
+```bash
+python3 scripts/audit_curriculum.py --strict
+```
+
+It requires each concept track to contain a substantive guide and metadata
+lesson, executable project and tests, separated solution, and scored stage
+assessment. Passing this gate is necessary but does not replace reviewer,
+learner, clean-environment, licensing, or accessibility evidence.
 
 A vertical milestone is complete when:
 
@@ -521,23 +704,26 @@ A vertical milestone is complete when:
 - Security, privacy, accessibility, and responsible-AI requirements are addressed.
 - At least one fresh learner has completed the path and blocking feedback is resolved.
 - CI passes and maintainers are assigned for published material.
+- Every library used in the milestone meets the library academy definition of done for the required completion level.
 
-## 16. Immediate Implementation Backlog
+## 17. Immediate Implementation Backlog
 
 Work begins with Milestone 0 in this order:
 
 1. Create the content metadata JSON Schema and a curriculum-graph validator.
 2. Create lesson, notebook, project, assessment, dataset-card, model-card, and solution templates.
 3. Add authoring standards, review checklists, contributor workflow, and definition of done.
-4. Generate an inventory report for the 59 current tool folders and the existing roadmap.
-5. Establish CI for Markdown, links, metadata, secrets, and lightweight Python tests.
-6. Design the Stage 0–3 prerequisite graph and placement diagnostics.
-7. Build the first complete orientation-to-Python vertical slice.
-8. Test that slice with beginner feedback before expanding the foundation milestone.
+4. Generate an inventory report for the 60 current academy folders and the existing roadmap.
+5. Create the library academy README, lesson, cookbook, troubleshooting, project, and assessment templates.
+6. Establish CI for Markdown, links, metadata, secrets, and lightweight Python/notebook tests.
+7. Design the Stage 0–3 prerequisite graph and placement diagnostics.
+8. Build the first complete orientation-to-Python vertical slice.
+9. Build NumPy and Pandas as the pilot academies and validate their cross-links to the curriculum.
+10. Test both the curriculum slice and pilot academies with beginner feedback before expanding the foundation milestone.
 
 No later-stage content should be mass-scaffolded while these authoring and quality foundations remain unvalidated.
 
-## 17. Risks and Mitigations
+## 18. Risks and Mitigations
 
 | Risk | Mitigation |
 |---|---|
@@ -549,9 +735,11 @@ No later-stage content should be mass-scaffolded while these authoring and quali
 | Compute prevents participation | Keep the core CPU/free-GPU compatible and label paid-compute extensions. |
 | Metrics encourage checkbox completion | Gate stages on evidence and public rubrics, not page completion. |
 | Community contributions reduce consistency | Require templates, automated checks, domain review, and a published content contract. |
-| Tool pages dominate conceptual learning | Keep tools in the reference layer and organize curriculum around transferable competencies. |
+| Tool pages dominate conceptual learning | Keep the curriculum concept-first and make academies link to shared theory instead of redefining it. |
+| Library academies duplicate curriculum | Teach shared concepts in the curriculum; academies own tool-specific workflows and link to prerequisites. |
+| 60 academies become shallow or stale | Build in dependency waves, enforce academy completion gates, and assign versioned ownership. |
 
-## 18. Project Defaults
+## 19. Project Defaults
 
 - The canonical content language is English. Internationalization can begin after the stable English core.
 - Python is primary; SQL, shell, JavaScript/TypeScript, and systems concepts appear where professionally relevant.
@@ -563,8 +751,9 @@ No later-stage content should be mass-scaffolded while these authoring and quali
 - Solutions remain available to self-directed learners but are separated from learner-facing exercises.
 - Large datasets and model weights are not committed to Git.
 - Vertical quality takes priority over superficial breadth.
+- `Libraries/` is the canonical home for basic-to-advanced tool learning paths; `references/` is reserved for concise lookup material.
 
-## 19. Acceptance Criteria for This Blueprint
+## 20. Acceptance Criteria for This Blueprint
 
 This blueprint is ready to guide implementation when it:
 
@@ -572,6 +761,7 @@ This blueprint is ready to guide implementation when it:
 - Covers all major AI disciplines through the common core or a named specialization.
 - Gives beginners a prerequisite-free entry point and experienced learners placement options.
 - Defines content, project, metadata, framework, compute, assessment, and publication contracts.
+- Defines a reusable academy structure, progression, rollout order, and completion gate for all libraries.
 - Makes graduation depend on demonstrable work.
 - Provides a safe migration path for the existing repository.
 - Specifies testable milestone completion rules.

@@ -1,0 +1,1 @@
+# No Python dependency; validate with Docker Engine 27.x in CI.

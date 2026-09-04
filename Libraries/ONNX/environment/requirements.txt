@@ -1,0 +1,4 @@
+# Reference runtime: CPython 3.12 (the authoring wheel is not guaranteed on 3.14).
+onnx>=1.17,<2
+onnxruntime>=1.20,<2
+numpy>=2,<3

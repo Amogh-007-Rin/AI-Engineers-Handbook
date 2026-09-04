@@ -1,0 +1,2 @@
+# Detectron2 is installed from its official wheel/source matrix for matching PyTorch/CUDA.
+torch>=2.4,<3

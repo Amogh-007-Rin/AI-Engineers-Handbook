@@ -1,0 +1,28 @@
+name: Compatibility academy smoke tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 5 * * 2"
+
+permissions:
+  contents: read
+
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test PyCaret
+        run: |
+          python -m pip install -r Libraries/PyCaret/environment/requirements.txt
+          python -m unittest discover -s Libraries/PyCaret/projects -p 'test_experiment.py'
+      - name: Test Orbit
+        run: |
+          python -m pip install -r Libraries/Orbit/environment/requirements.txt
+          python -m unittest discover -s Libraries/Orbit/projects -p 'test_time_contract.py'
+          python -m unittest discover -s Libraries/Orbit/projects -p 'test_orbit_model.py'

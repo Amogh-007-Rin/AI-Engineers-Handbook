@@ -1,0 +1,1 @@
+# Runtime validated with tensorflow-serving 2.20.x container images.

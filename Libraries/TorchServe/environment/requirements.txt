@@ -1,0 +1,1 @@
+# Runtime validated with the TorchServe 0.12.x container image.

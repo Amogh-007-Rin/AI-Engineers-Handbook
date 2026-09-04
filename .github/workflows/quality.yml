@@ -1,0 +1,81 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install lightweight academy dependencies
+        run: |
+          python3 -m pip install -r Libraries/NumPy/environment/requirements.txt
+          python3 -m pip install -r Libraries/Pandas/environment/requirements.txt
+          python3 -m pip install -r Libraries/DuckDB/environment/requirements.txt
+          python3 -m pip install -r Libraries/Fastapi/fastapi-course/environment/requirements.txt
+          python3 -m pip install -r Libraries/Seaborn/environment/requirements.txt
+          python3 -m pip install -r Libraries/SciPy/environment/requirements.txt
+          python3 -m pip install -r Libraries/Statsmodels/environment/requirements.txt
+          python3 -m pip install -r Libraries/Polars/environment/requirements.txt
+          python3 -m pip install -r Libraries/Scikit-Learn/environment/requirements.txt
+          python3 -m pip install -r Libraries/Optuna/environment/requirements.txt
+          python3 -m pip install -r Libraries/ARIMA-SARIMA/environment/requirements.txt
+      - name: Validate content and curriculum graph
+        run: python3 scripts/validate_content.py
+      - name: Scan repository hygiene and secrets
+        run: python3 scripts/scan_repository.py
+      - name: Enforce structural completion gates
+        run: |
+          python3 scripts/audit_library_academies.py --strict
+          python3 scripts/audit_curriculum.py --strict
+      - name: Execute dependency-free learning notebooks
+        run: python3 scripts/execute_notebooks.py
+      - name: Run validator tests
+        run: python3 -m unittest discover -s tests
+      - name: Run dependency-free contract suites
+        run: python3 scripts/run_contract_tests.py
+      - name: Run executable curriculum tests
+        run: |
+          python3 -m unittest discover -s curriculum/machine-learning/project
+          python3 -m unittest discover -s curriculum/deep-learning/project
+          python3 -m unittest discover -s curriculum/computer-vision/project
+          python3 -m unittest discover -s curriculum/nlp-and-speech/project
+          python3 -m unittest discover -s curriculum/reinforcement-learning/project
+          python3 -m unittest discover -s curriculum/time-series/project
+          python3 -m unittest discover -s curriculum/recommender-systems/project
+          python3 -m unittest discover -s curriculum/graph-learning/project
+          python3 -m unittest discover -s curriculum/foundations/project
+          python3 -m unittest discover -s curriculum/mathematics/project
+          python3 -m unittest discover -s curriculum/data/project
+          python3 -m unittest discover -s curriculum/responsible-ai/project
+          python3 -m unittest discover -s curriculum/career/project
+          python3 -m unittest discover -s curriculum/generative-ai/project
+          python3 -m unittest discover -s curriculum/agents/project
+          python3 -m unittest discover -s curriculum/ml-systems/project
+          python3 -m unittest discover -s curriculum/research/project
+      - name: Run lightweight academy tests
+        run: |
+          python3 -m unittest discover -s Libraries/NumPy/projects
+          python3 -m unittest discover -s Libraries/Pandas/projects
+          python3 -m unittest discover -s Libraries/DuckDB/projects
+          python3 -m unittest discover -s Libraries/Fastapi/fastapi-course
+          python3 -m unittest discover -s Libraries/Matplotlib/projects
+          python3 -m unittest discover -s Libraries/Seaborn/projects
+          python3 -m unittest discover -s Libraries/SciPy/projects
+          python3 -m unittest discover -s Libraries/Statsmodels/projects
+          python3 -m unittest discover -s Libraries/Polars/projects
+          python3 -m unittest discover -s Libraries/Scikit-Learn/projects
+          python3 -m unittest discover -s Libraries/Optuna/projects
+          python3 -m unittest discover -s Libraries/ARIMA-SARIMA/projects
+          python3 -m unittest discover -s Libraries/Orbit/projects -p 'test_time_contract.py'
+      - name: Reject whitespace errors
+        run: git diff --check HEAD~1

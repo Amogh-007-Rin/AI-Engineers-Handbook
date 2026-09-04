@@ -1,0 +1,73 @@
+name: Heavy academy smoke tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  boosting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install boosting environments
+        run: |
+          python3 -m pip install -r Libraries/XGBoost/environment/requirements.txt
+          python3 -m pip install -r Libraries/LightGBM/environment/requirements.txt
+          python3 -m pip install -r Libraries/CatBoost/environment/requirements.txt
+          python3 -m pip install -r Libraries/Prophet/environment/requirements.txt
+      - name: Run warning-clean smoke tests
+        run: |
+          python3 -W error -m unittest discover -s Libraries/XGBoost/projects
+          python3 -W error -m unittest discover -s Libraries/LightGBM/projects
+          python3 -W error -m unittest discover -s Libraries/CatBoost/projects
+          python3 -m unittest discover -s Libraries/Prophet/projects
+  deep-learning-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU frameworks
+        run: |
+          python3 -m pip install -r Libraries/PyTorch/environment/requirements.txt
+          python3 -m pip install -r Libraries/JAX/environment/requirements.txt
+          python3 -m pip install -r Libraries/Keras/environment/requirements.txt
+          python3 -m pip install -r Libraries/Flax/environment/requirements.txt
+          python3 -m pip install -r Libraries/ONNX/environment/requirements.txt
+      - name: Run framework smoke tests
+        run: |
+          python3 -W error -m unittest discover -s Libraries/PyTorch/projects
+          python3 -W error -m unittest discover -s Libraries/JAX/projects
+          KERAS_BACKEND=jax python3 -W error -m unittest discover -s Libraries/Keras/projects
+          python3 -W error -m unittest discover -s Libraries/Flax/projects
+          python3 -W error -m unittest discover -s Libraries/ONNX/projects
+  tensorflow-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m pip install -r Libraries/TensorFlow/environment/requirements.txt
+      - run: python3 -W error -m unittest discover -s Libraries/TensorFlow/projects
+  fastai-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m pip install -r Libraries/FastAI/environment/requirements.txt
+      - run: python3 -m unittest discover -s Libraries/FastAI/projects
