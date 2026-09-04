@@ -16,7 +16,10 @@ class FastAIProjectTests(unittest.TestCase):
         learner, row = train(), frame().iloc[0]
         before = learner.predict(row)[0]
         with tempfile.TemporaryDirectory() as directory:
-            after = load_learner(export(learner, Path(directory) / "export.pkl")).predict(row)[0]
+            artifact = export(learner, Path(directory) / "export.pkl")
+            with self.assertWarnsRegex(UserWarning, "insecure pickle"):
+                restored = load_learner(artifact)
+            after = restored.predict(row)[0]
         self.assertEqual(str(before), str(after))
 
 

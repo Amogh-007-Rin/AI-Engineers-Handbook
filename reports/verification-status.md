@@ -84,6 +84,12 @@ must be updated before a stable release claim.
   3.14. Its import emits PyTorch's documented `torch.jit.script` Python 3.14
   `FutureWarning`, so this is not warning-clean evidence; the strict academy
   reference remains the isolated Python 3.12 domain-framework workflow.
+- FastAI 2.8.8 installs in the clean CPython 3.14 CPU environment and both
+  native tabular split and export/reload tests pass functionally. Importing its
+  dependency chain exposes CPython 3.14 deprecations and PyTorch's JIT warning,
+  so warning-strict evidence remains assigned to Python 3.12. The run also
+  strengthened the test and lesson to assert and explain the untrusted-pickle
+  boundary of `load_learner` rather than suppressing its security warning.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
