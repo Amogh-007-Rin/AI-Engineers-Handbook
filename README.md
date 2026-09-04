@@ -1,9 +1,36 @@
-# AI Engineers Handbook
+<p align="center">
+  <img src="assets/branding/ai-engineers-handbook-banner.webp" alt="AI Engineers Handbook — from first principles to production" width="100%">
+</p>
 
-[![Quality](https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/quality.yml/badge.svg)](https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/quality.yml)
-[![MLOps academies](https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/mlops-academies.yml/badge.svg)](https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/mlops-academies.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+<h1 align="center">AI Engineers Handbook</h1>
+
+<p align="center">
+  <strong>Learn the foundations. Build real systems. Prove what works.</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/quality.yml"><img src="https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/quality.yml/badge.svg" alt="Quality workflow"></a>
+  <a href="https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/mlops-academies.yml"><img src="https://github.com/Amogh-007-Rin/AI-Engineers-Handbook/actions/workflows/mlops-academies.yml/badge.svg" alt="MLOps academy workflow"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-F59E0B.svg" alt="MIT License"></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-22C55E.svg" alt="Contributions welcome"></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Curriculum-17_tracks-00D4FF" alt="17 curriculum tracks">
+  <img src="https://img.shields.io/badge/Academies-60_tools-7C3AED" alt="60 tool academies">
+  <img src="https://img.shields.io/badge/Specializations-10_paths-EC4899" alt="10 specialization paths">
+  <img src="https://img.shields.io/badge/Approach-CPU_first-14B8A6" alt="CPU-first approach">
+  <img src="https://img.shields.io/badge/Level-Beginner_%E2%86%92_Advanced-F97316" alt="Beginner to advanced">
+</p>
+
+<p align="center">
+  <a href="#-start-learning"><strong>Start learning</strong></a> ·
+  <a href="#-curriculum-map"><strong>Explore curriculum</strong></a> ·
+  <a href="Libraries/CATALOG.md"><strong>Browse 60 academies</strong></a> ·
+  <a href="#-contributing"><strong>Contribute</strong></a>
+</p>
+
+---
 
 A free, open-source learning system for becoming an AI engineer—from Python,
 mathematics, and data foundations to machine learning, deep learning, domain AI,
@@ -13,14 +40,26 @@ This is not an API-link collection. Each learning slice targets an observable
 outcome: explain the concept, implement it, test it, diagnose failure, and
 produce evidence that another person can review.
 
-> **Project status:** all 17 curriculum tracks and all 60 library academies have
+> [!IMPORTANT]
+> **Project maturity:** all 17 curriculum tracks and all 60 library academies have
 > substantive structural learning slices. Content remains mostly `draft` or
 > `review` until independent technical, pedagogical, accessibility, security,
 > and learner-journey evidence is recorded. Consult the
 > [verification report](reports/verification-status.md) before treating this as
 > a stable reviewed release.
 
-## What is included
+## ✨ What makes this different
+
+| Principle | What it means in practice |
+|---|---|
+| 🧠 **Concept before framework** | Understand the invariant before learning a library abstraction. |
+| 🧪 **Evidence before confidence** | Tests, baselines, failure cases, and uncertainty support every claim. |
+| 🛠️ **Build to learn** | Each track leads to runnable work, not passive completion badges. |
+| 🛡️ **Safety by design** | Privacy, security, misuse, fairness, and rollback are engineering requirements. |
+| 🌍 **Accessible by default** | The core targets normal CPUs and free hosted accelerators. |
+| 🔁 **Production is part of AI** | Serving, monitoring, incidents, maintenance, and retirement are first-class topics. |
+
+## 🎁 What is included
 
 - **17 concept-first tracks** from beginner foundations through production,
   research, responsible AI, and career practice.
@@ -37,7 +76,7 @@ produce evidence that another person can review.
 - **Isolated CI lanes** for lightweight, NLP, visualization, framework,
   compatibility, domain, and MLOps academies.
 
-## Who this is for
+## 👥 Who this is for
 
 The flagship route assumes basic computer literacy, not prior professional
 software or advanced mathematics experience. Experienced developers, analysts,
@@ -48,7 +87,7 @@ You will get the most value if you run examples, predict outputs before
 execution, record failures and fixes, complete stage gates, compare tools with
 simpler alternatives, and request review of finished projects.
 
-## Start learning
+## 🚀 Start learning
 
 1. Read [How to learn with this handbook](curriculum/foundations/00-orientation/README.md).
 2. Select an entry point from the [curriculum map](curriculum/README.md).
@@ -61,7 +100,17 @@ simpler alternatives, and request review of finished projects.
 If you are unsure where to begin, follow orientation → foundations → mathematics
 → data → machine learning → deep learning.
 
-## Curriculum map
+### Choose your route
+
+| Your starting point | Recommended route | First proof |
+|---|---|---|
+| 🌱 **New to programming** | Orientation → Python/software → mathematics → data | A tested Python project and learning log |
+| 💻 **Software developer** | Placement checks → mathematics/data gaps → ML systems | A leakage-safe baseline with reproducible evaluation |
+| 📊 **Analyst or data practitioner** | Software foundations → ML → specialization | A packaged pipeline with tests and a model card |
+| 🔬 **Research-focused learner** | Core ML/DL → research → domain specialization | A reproduced result with an ablation and limitations |
+| ⚙️ **ML practitioner** | Production AI → responsible AI → capstone | A monitored service with rollback and incident evidence |
+
+## 🗺️ Curriculum map
 
 | Area | Primary outcome | Entry point |
 |---|---|---|
@@ -83,7 +132,7 @@ If you are unsure where to begin, follow orientation → foundations → mathema
 | Research | Literature review, reproduction, ablation, and evidence quality | [Research](curriculum/research/README.md) |
 | Career and capstone | Portfolio, system design, collaboration, and defense | [Career](curriculum/career/README.md) |
 
-## Library academies
+## 🧰 Library academies
 
 The [complete catalog](Libraries/CATALOG.md) covers 60 tools across scientific
 computing, visualization, classical ML, deep learning, NLP/generative AI,
@@ -95,7 +144,7 @@ assessment, a declared environment, troubleshooting, and production/security
 guidance. The curriculum teaches concepts; academies teach tool-specific
 workflows. Use both.
 
-## How a learning slice works
+## 🔄 How a learning slice works
 
 ```text
 prerequisites → lesson → guided exercises → independent project
@@ -109,7 +158,7 @@ Metadata records prerequisites, level, outcomes, formats, compute needs, status,
 and verification date. Validation rejects invalid links, duplicate slugs,
 missing prerequisites, cycles, and unsupported publication states.
 
-## Local setup
+## ⚡ Local setup
 
 The dependency-free core requires Python 3.12 or newer:
 
@@ -137,7 +186,7 @@ available. Check the academy environment and
 Core examples target CPUs or free hosted accelerators; costly extensions are
 explicitly labeled.
 
-## Validate the repository
+## ✅ Validate the repository
 
 Run the complete local dependency-free gate from the repository root:
 
@@ -145,6 +194,7 @@ Run the complete local dependency-free gate from the repository root:
 python3 scripts/validate_content.py
 python3 scripts/audit_library_academies.py --strict
 python3 scripts/audit_curriculum.py --strict
+python3 scripts/audit_release_readiness.py
 python3 scripts/execute_notebooks.py
 python3 scripts/run_contract_tests.py
 python3 scripts/scan_repository.py
@@ -157,7 +207,11 @@ heavy framework, container, external service, or human review. Workflows under
 [`.github/workflows`](.github/workflows) provide isolated CI lanes; successful
 run URLs must be recorded before a stable release claim.
 
-## Repository layout
+Run `python3 scripts/audit_release_readiness.py --strict` only when preparing a
+stable tag. It will fail until the structured remote-run, review, and per-academy
+learner evidence in `reports/release-evidence.json` is complete.
+
+## 🏗️ Repository architecture
 
 ```text
 AI-Engineers-Handbook/
@@ -175,7 +229,7 @@ AI-Engineers-Handbook/
 └── MAINTENANCE.md    # review cadence and incident workflow
 ```
 
-## Contributing
+## 🤝 Contributing
 
 Corrections, complete learning slices, tests, accessibility improvements,
 translations, compatibility fixes, learner feedback, and independent reviews
@@ -193,14 +247,14 @@ Before opening a pull request:
 Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). Review
 and upkeep expectations are in [MAINTENANCE.md](MAINTENANCE.md).
 
-## Security and responsible disclosure
+## 🔐 Security and responsible disclosure
 
 Do not publish credentials, private data, or an unmitigated exploit in an issue.
 Follow [SECURITY.md](SECURITY.md) for private reporting. Examples should use
 synthetic or appropriately licensed data, bounded side effects, redacted
 secrets, and explicit artifact trust boundaries.
 
-## Roadmap and release maturity
+## 📍 Roadmap and release maturity
 
 The blueprint and definition of done live in [project.md](project.md). A stable
 release additionally requires independent domain, pedagogy, accessibility, and
@@ -209,13 +263,15 @@ execution of heavy framework/container lanes. Green unit tests do not waive
 those requirements. The [verification ledger](reports/verification-status.md)
 is the authoritative record of proof and remaining work.
 
-## License
+## 📜 License
 
 Code and original documentation are available under the [MIT License](LICENSE).
 Third-party datasets, models, papers, images, and quoted material retain their
-own licenses and require separate attribution.
+own licenses and require separate attribution. The generated hero artwork has a
+public [asset provenance record](assets/branding/README.md) with its prompt,
+tooling, optimization, and accessibility notes.
 
-## Maintainer
+## 💜 Maintainer
 
 Initial maintainer: [@Amogh-007-Rin](https://github.com/Amogh-007-Rin).
 Ownership covers triage and coordination; specialized publication gates still

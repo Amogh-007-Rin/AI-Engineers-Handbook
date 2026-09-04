@@ -22,7 +22,11 @@ must be updated before a stable release claim.
   with warnings treated as errors—17 curriculum projects and 19 academy
   contracts, totaling 82 tests. Its manifest is tested against the complete
   curriculum directory set.
-- `python3 -m unittest discover -s tests -v`: fourteen validator/runner tests pass.
+- `python3 -m unittest discover -s tests -v`: seventeen validator/runner tests pass.
+- `python3 scripts/audit_release_readiness.py` validates the structured release
+  evidence ledger and currently reports every missing remote-run, independent-
+  review, and per-academy learner-journey gate. Its `--strict` mode is reserved
+  for release candidates and correctly fails while external evidence is absent.
 - Detectron2 and MMDetection contract suites pass without compiled frameworks;
   FastAPI's four service integration tests pass in its declared environment.
 - Fresh isolated environment `/tmp/handbook-core-env` on CPython 3.14 installed

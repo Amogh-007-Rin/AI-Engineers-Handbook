@@ -31,6 +31,8 @@ jobs:
           python3 -m pip install -r Libraries/ARIMA-SARIMA/environment/requirements.txt
       - name: Validate content and curriculum graph
         run: python3 scripts/validate_content.py
+      - name: Validate release evidence ledger
+        run: python3 scripts/audit_release_readiness.py
       - name: Scan repository hygiene and secrets
         run: python3 scripts/scan_repository.py
       - name: Enforce structural completion gates
