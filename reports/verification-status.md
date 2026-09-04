@@ -22,7 +22,7 @@ must be updated before a stable release claim.
   with warnings treated as errors—17 curriculum projects and 19 academy
   contracts, totaling 82 tests. Its manifest is tested against the complete
   curriculum directory set.
-- `python3 -m unittest discover -s tests -v`: twelve validator/runner tests pass.
+- `python3 -m unittest discover -s tests -v`: fourteen validator/runner tests pass.
 - Detectron2 and MMDetection contract suites pass without compiled frameworks;
   FastAPI's four service integration tests pass in its declared environment.
 - Fresh isolated environment `/tmp/handbook-core-env` on CPython 3.14 installed
@@ -90,6 +90,17 @@ must be updated before a stable release claim.
   so warning-strict evidence remains assigned to Python 3.12. The run also
   strengthened the test and lesson to assert and explain the untrusted-pickle
   boundary of `load_learner` rather than suppressing its security warning.
+- Fresh isolated CPython 3.14 SDK/MLOps environments installed OpenAI Python
+  1.109.1, MLflow 3.16.0, and Weights & Biases 0.29.0. Each academy passes
+  three native tests with warnings treated as errors. The OpenAI test performs
+  a real typed Responses API request/response round trip through an injected
+  offline transport with no key or billable call. MLflow creates, terminates,
+  and reads a real SQLite-backed run with provenance, metrics, and a signature
+  artifact. W&B uses real offline mode to log a recursively redacted config,
+  metric, and model-card artifact with state scoped to a disposable directory.
+- The MLflow run identified an obsolete `<3` academy cap and the maintenance-
+  only legacy file tracking backend. The environment now targets MLflow 3.16+
+  and the project uses SQLite tracking with an explicit artifact location.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
@@ -104,6 +115,8 @@ must be updated before a stable release claim.
   framework and version checks.
 - `domain-framework-academies.yml` isolates ten pretrained NLP, generative,
   graph, and reinforcement-learning environments in separate Python 3.12 jobs.
+- `mlops-academies.yml` runs real offline OpenAI SDK, MLflow, and W&B lifecycle
+  tests independently on Python 3.12 and 3.14.
 
 Workflow definitions are not proof that a remote run succeeded. Record the
 commit and run URL here before marking a release stable.
