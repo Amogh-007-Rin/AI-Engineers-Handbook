@@ -52,6 +52,31 @@ class MetadataValidationTests(unittest.TestCase):
         self.assertIn("slug must be lowercase kebab-case", validator.validate_metadata(doc))
 
 
+class LinkValidationTests(unittest.TestCase):
+    def test_checks_markdown_images_and_html_assets(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            asset = root / "banner.webp"
+            asset.write_bytes(b"fixture")
+            page = root / "README.md"
+            page.write_text(
+                "![banner](banner.webp)\n<img src='missing.webp' alt='missing'>\n",
+                encoding="utf-8",
+            )
+            errors = validator.validate_links(page, root=root)
+        self.assertEqual(errors, ["broken local link: missing.webp"])
+
+    def test_rejects_links_that_escape_repository(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            page = root / "README.md"
+            page.write_text("[escape](../outside.md)\n", encoding="utf-8")
+            self.assertEqual(
+                validator.validate_links(page, root=root),
+                ["link escapes repository: ../outside.md"],
+            )
+
+
 class LibraryCoverageTests(unittest.TestCase):
     def test_every_academy_has_substantive_navigation(self) -> None:
         libraries = Path(__file__).parents[1] / "Libraries"

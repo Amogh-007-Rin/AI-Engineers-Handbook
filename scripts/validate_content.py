@@ -27,7 +27,9 @@ VALID_LEVEL = {"foundation", "practitioner", "advanced", "maintainer"}
 VALID_COMPUTE = {"cpu", "free-gpu", "gpu-optional", "external-service"}
 VALID_FORMATS = {"lesson", "notebook", "exercise", "project", "assessment", "reference"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-LINK_RE = re.compile(r"(?<!!)\[[^]]*]\(([^)]+)\)")
+LINK_RE = re.compile(r"\[[^]]*]\(([^)]+)\)")
+HTML_LINK_RE = re.compile(r"(?:href|src)=[\"']([^\"']+)[\"']", re.IGNORECASE)
+PUBLIC_DOC_ROOTS = (ROOT / "templates", ROOT / "reports", ROOT / ".github")
 
 
 @dataclass(frozen=True)
@@ -131,20 +133,30 @@ def validate_metadata(doc: Document) -> list[str]:
     return errors
 
 
-def validate_links(path: Path) -> list[str]:
+def validate_links(path: Path, *, root: Path = ROOT) -> list[str]:
     errors: list[str] = []
     text = path.read_text(encoding="utf-8")
-    for target in LINK_RE.findall(text):
+    targets = LINK_RE.findall(text) + HTML_LINK_RE.findall(text)
+    for target in targets:
         target = target.strip().split("#", 1)[0]
-        if not target or target.startswith(("http://", "https://", "mailto:")):
+        if not target or target.startswith(("http://", "https://", "mailto:", "data:")):
             continue
         decoded = target.replace("%20", " ")
         candidate = (path.parent / decoded).resolve()
-        if ROOT not in candidate.parents and candidate != ROOT:
+        root = root.resolve()
+        if root not in candidate.parents and candidate != root:
             errors.append(f"link escapes repository: {target}")
         elif not candidate.exists():
             errors.append(f"broken local link: {target}")
     return errors
+
+
+def find_public_markdown() -> list[Path]:
+    paths = set(ROOT.glob("*.md"))
+    for root in (*CONTENT_ROOTS, *PUBLIC_DOC_ROOTS):
+        if root.exists():
+            paths.update(root.rglob("*.md"))
+    return sorted(paths)
 
 
 def find_documents() -> tuple[list[Document], list[str]]:
@@ -161,8 +173,6 @@ def find_documents() -> tuple[list[Document], list[str]]:
                 continue
             if metadata is not None:
                 documents.append(Document(path, metadata))
-            for error in validate_links(path):
-                errors.append(f"{path.relative_to(ROOT)}: {error}")
     return documents, errors
 
 
@@ -212,6 +222,10 @@ def validate_graph(documents: list[Document]) -> list[str]:
 
 def main() -> int:
     documents, errors = find_documents()
+    markdown_files = find_public_markdown()
+    for path in markdown_files:
+        for error in validate_links(path):
+            errors.append(f"{path.relative_to(ROOT)}: {error}")
     for doc in documents:
         for error in validate_metadata(doc):
             errors.append(f"{doc.path.relative_to(ROOT)}: {error}")
@@ -221,7 +235,10 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print(f"Validated {len(documents)} metadata document(s); links and graph are valid.")
+    print(
+        f"Validated {len(documents)} metadata document(s) and "
+        f"{len(markdown_files)} public Markdown file(s); links and graph are valid."
+    )
     return 0
 
 
