@@ -44,6 +44,12 @@ must be updated before a stable release claim.
   and correctly failed with no compatible `tensorflow-cpu` distribution. Its
   declared reference and CI runtime remains CPython 3.12; this local result is
   compatibility-boundary evidence, not a passing TensorFlow execution.
+- Fresh isolated CPython 3.14 boosting/forecasting environment installed the
+  declared XGBoost, LightGBM, CatBoost, and Prophet requirements with no cache
+  reuse. All eight native tests pass with warnings treated as errors, covering
+  seeded reproducibility, training quality, native serialization, forecast
+  horizons, and trend behavior. The run also identified and fixed Prophet's
+  writable Matplotlib configuration boundary.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation

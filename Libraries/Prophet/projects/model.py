@@ -1,6 +1,10 @@
 """Small deterministic Prophet trend fixture."""
 
 from __future__ import annotations
+import os
+
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/ai-engineers-handbook-matplotlib")
+
 import pandas as pd
 from prophet import Prophet
 
