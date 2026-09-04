@@ -1,0 +1,47 @@
+name: Content problem
+description: Report incorrect, unclear, inaccessible, or outdated learning material.
+title: "[Content]: "
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping make the handbook more accurate and useful.
+  - type: input
+    id: path
+    attributes:
+      label: Affected path
+      placeholder: curriculum/machine-learning/README.md
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Problem type
+      options:
+        - Technical correctness
+        - Explanation or prerequisite gap
+        - Broken exercise or assessment
+        - Accessibility or editorial issue
+        - Outdated API or dependency
+        - Licensing or attribution
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What is wrong?
+      description: Include the exact claim, instruction, or behavior. Do not include secrets or private data.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or suggested correction
+      description: Prefer official documentation, standards, primary research, or a minimal reproduction.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I have not included credentials, private data, or unmitigated exploit details.
+          required: true

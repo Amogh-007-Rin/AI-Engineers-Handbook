@@ -101,6 +101,11 @@ must be updated before a stable release claim.
 - The MLflow run identified an obsolete `<3` academy cap and the maintenance-
   only legacy file tracking backend. The environment now targets MLflow 3.16+
   and the project uses SQLite tracking with an explicit artifact location.
+- BentoML 1.4.39 installs on CPython 3.14 and all five project tests pass
+  functionally, including construction and in-process execution of a real
+  typed service with explicit traffic limits. Its pinned `cattrs`/`pathspec`
+  dependency chain emits Python 3.14 deprecations, so BentoML remains a
+  warning-strict Python 3.12 CI target rather than hiding upstream warnings.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
@@ -116,7 +121,8 @@ must be updated before a stable release claim.
 - `domain-framework-academies.yml` isolates ten pretrained NLP, generative,
   graph, and reinforcement-learning environments in separate Python 3.12 jobs.
 - `mlops-academies.yml` runs real offline OpenAI SDK, MLflow, and W&B lifecycle
-  tests independently on Python 3.12 and 3.14.
+  tests independently on Python 3.12 and 3.14, plus BentoML on its strict
+  Python 3.12 reference runtime.
 
 Workflow definitions are not proof that a remote run succeeded. Record the
 commit and run URL here before marking a release stable.

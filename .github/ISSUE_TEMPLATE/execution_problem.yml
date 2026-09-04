@@ -1,0 +1,47 @@
+name: Execution problem
+description: Report a failing project, notebook, validator, or declared environment.
+title: "[Execution]: "
+labels: [bug]
+body:
+  - type: input
+    id: path
+    attributes:
+      label: Failing path or command
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and platform
+      placeholder: Python 3.12.8, Ubuntu 24.04, CPU
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Minimal reproduction
+      description: Include environment creation, install, and execution commands.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Sanitized output
+      description: Remove tokens, usernames, private paths, and private data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I used the environment declared by the affected academy or lesson.
+          required: true
+        - label: I removed credentials and private data from this report.
+          required: true

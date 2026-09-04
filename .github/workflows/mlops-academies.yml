@@ -3,12 +3,14 @@ name: MLOps academy tests
 on:
   pull_request:
     paths:
+      - "Libraries/BentoML/**"
       - "Libraries/MLflow/**"
       - "Libraries/OpenAI SDK/**"
       - "Libraries/Weights & Biases/**"
       - ".github/workflows/mlops-academies.yml"
   push:
     paths:
+      - "Libraries/BentoML/**"
       - "Libraries/MLflow/**"
       - "Libraries/OpenAI SDK/**"
       - "Libraries/Weights & Biases/**"
@@ -25,8 +27,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.12", "3.14"]
-        academy: ["MLflow", "OpenAI SDK", "Weights & Biases"]
+        include:
+          - {python: "3.12", academy: "BentoML"}
+          - {python: "3.12", academy: "MLflow"}
+          - {python: "3.14", academy: "MLflow"}
+          - {python: "3.12", academy: "OpenAI SDK"}
+          - {python: "3.14", academy: "OpenAI SDK"}
+          - {python: "3.12", academy: "Weights & Biases"}
+          - {python: "3.14", academy: "Weights & Biases"}
     env:
       MLFLOW_DISABLE_AGENT_HINT: "1"
       MLFLOW_ENABLE_TELEMETRY: "false"
