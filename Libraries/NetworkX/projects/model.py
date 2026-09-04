@@ -21,4 +21,5 @@ def features(graph):
 
 
 def round_trip(graph):
-    return nx.node_link_graph(json.loads(json.dumps(nx.node_link_data(graph))), edges="links")
+    payload = nx.node_link_data(graph, edges="links")
+    return nx.node_link_graph(json.loads(json.dumps(payload)), edges="links")

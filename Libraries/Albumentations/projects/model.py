@@ -1,5 +1,12 @@
 """Deterministic Albumentations image/box transform contract."""
 
+import os
+
+# Keep training and CI imports deterministic, offline, and free of update
+# telemetry. Applications can perform dependency checks in their own release
+# process instead of at model-import time.
+os.environ.setdefault("NO_ALBUMENTATIONS_UPDATE", "1")
+
 import albumentations as A
 import numpy as np
 

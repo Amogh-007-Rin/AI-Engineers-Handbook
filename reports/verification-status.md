@@ -66,6 +66,13 @@ must be updated before a stable release claim.
   code accesses CPython integer internals removed in 3.14. Gensim therefore
   remains assigned to the repository's clean Python 3.12 NLP job; this is a
   recorded compatibility boundary, not passing Gensim execution evidence.
+- Fresh isolated CPython 3.14 extended-academy environment installed
+  Albumentations 2.0.8, Bokeh 3.10.0, Dash 3.4.0, Dask 2025.12.0, Gymnasium
+  1.3.0, NetworkX 3.6.1, OpenCV 4.14.0.94, and Plotly 6.9.0. All 17 native
+  project tests pass with warnings treated as errors. The run exposed and
+  fixed Albumentations' import-time network update check and a NetworkX 3.6
+  node-link serialization-key drift; both contracts are now explicit and
+  offline-safe.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation

@@ -1,4 +1,7 @@
-import unittest
+import os, unittest
+
+os.environ.setdefault("NO_ALBUMENTATIONS_UPDATE", "1")
+
 import numpy as np
 import albumentations as A
 from model import augment
