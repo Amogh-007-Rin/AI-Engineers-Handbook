@@ -12,7 +12,7 @@ class LibraryAuditTests(unittest.TestCase):
     def test_complete_academy_requires_every_artifact_class(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / "README.md").write_text("g" * 1000)
+            (root / "README.md").write_text("[Primary source registry](../SOURCES.md)\n" + "g" * 1000)
             (root / "01-foundations").mkdir()
             (root / "01-foundations" / "README.md").write_text("---\n" + "l" * 800)
             for child in ("exercises", "projects", "environment"): (root / child).mkdir()
@@ -23,6 +23,12 @@ class LibraryAuditTests(unittest.TestCase):
             (root / "assessment.md").write_text("a" * 120)
             (root / "environment" / "requirements.txt").write_text("")
             self.assertTrue(all(MODULE.evidence(root).values()))
+
+    def test_academy_requires_primary_source_registry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "README.md").write_text("g" * 1200)
+            self.assertFalse(MODULE.evidence(root)["sources"])
 
     def test_project_readme_is_not_executable_evidence(self):
         with tempfile.TemporaryDirectory() as directory:

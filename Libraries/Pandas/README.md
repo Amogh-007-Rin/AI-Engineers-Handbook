@@ -40,3 +40,8 @@ python -c "import pandas as pd; print(pd.__version__); print(pd.DataFrame({'x': 
 ```
 
 Official reference: [Pandas documentation](https://pandas.pydata.org/docs/).
+
+
+## Primary sources
+
+Start with the [Primary source registry](../SOURCES.md), then cite the exact official page, version, access date, release note, or primary paper used for each version-sensitive claim.

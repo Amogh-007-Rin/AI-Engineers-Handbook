@@ -25,7 +25,9 @@ journeys required for “complete academy” status.
 | MLOps and AI systems | 10 | MLflow, W&B, Airflow, BentoML, FastAPI, Docker, Kubernetes |
 | Graphs and graph learning | 3 | NetworkX, PyTorch Geometric, DGL |
 
-Browse every entry in the [categorized academy catalog](CATALOG.md).
+Browse every entry in the [categorized academy catalog](CATALOG.md), and use the
+[primary source registry](SOURCES.md) for official documentation, source
+repositories, and research starting points.
 
 ## Completion levels
 

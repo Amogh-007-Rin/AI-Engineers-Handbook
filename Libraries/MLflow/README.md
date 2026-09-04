@@ -114,3 +114,8 @@ A score of 80/100 is required, with no critical correctness, security, silent-da
 ## Source and maintenance policy
 
 Use the official MLflow documentation, release notes, source repository, and primary papers as authoritative sources. Record exact links in project work. Never infer current APIs from this guide alone: verify version-sensitive behavior and update this page's review date when evidence changes.
+
+
+## Primary sources
+
+Start with the [Primary source registry](../SOURCES.md), then cite the exact official page, version, access date, release note, or primary paper used for each version-sensitive claim.

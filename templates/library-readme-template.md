@@ -51,4 +51,8 @@ Link the quick-start exercise, guided project, independent project, rubric, and 
 
 ## Authoritative resources
 
-Link official documentation and primary sources. Do not reproduce API documentation.
+Link exact official documentation, release notes, source repositories,
+standards, and primary papers. Do not write only “see the official docs” or
+reproduce API documentation. Record versions and access dates. Use the shared
+[source registry](../Libraries/SOURCES.md) as a starting point, not a
+replacement for claim-level citations.

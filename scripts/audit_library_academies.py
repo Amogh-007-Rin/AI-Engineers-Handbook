@@ -24,9 +24,11 @@ def evidence(academy):
     python_files = [p for p in academy.rglob("*.py") if "__pycache__" not in p.parts]
     project_files = [p for p in python_files if not p.name.startswith("test")]
     test_files = [p for p in python_files if p.name.startswith("test")]
+    readmes = [academy / "README.md", academy / "readme.md"]
+    guide_text = next((path.read_text(encoding="utf-8") for path in readmes if path.is_file()), "")
     return {
-        "guide": any((academy / name).is_file() and len((academy / name).read_text(encoding="utf-8")) >= 1000
-                     for name in ("README.md", "readme.md")),
+        "guide": len(guide_text) >= 1000,
+        "sources": "../SOURCES.md" in guide_text,
         "lesson": bool(lessons) and any(p.read_text(encoding="utf-8").startswith("---\n")
                                         and len(p.read_text(encoding="utf-8")) >= 800 for p in lessons),
         "exercises": has_substantive(academy, "exercises/*.md", 150),

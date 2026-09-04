@@ -9,8 +9,9 @@ must be updated before a stable release claim.
 ## Verified locally
 
 - `python3 scripts/audit_library_academies.py --strict`: 60/60 academies contain
-  substantive guides, metadata lessons, exercises, executable project code,
-  project tests, separated solutions, scored assessments, and environments.
+  substantive guides, primary-source registry links, metadata lessons,
+  exercises, executable project code, project tests, separated solutions,
+  scored assessments, and environments.
 - `python3 scripts/validate_content.py`: 125 metadata documents plus all public
   Markdown surfaces; schema, Markdown/HTML local assets, internal links, unique
   slugs, and prerequisite graph pass.
@@ -23,7 +24,7 @@ must be updated before a stable release claim.
   with warnings treated as errors—17 curriculum projects and 19 academy
   contracts, totaling 82 tests. Its manifest is tested against the complete
   curriculum directory set.
-- `python3 -m unittest discover -s tests -v`: nineteen validator/runner tests pass.
+- `python3 -m unittest discover -s tests -v`: twenty validator/runner tests pass.
 - `python3 scripts/audit_release_readiness.py` validates the structured release
   evidence ledger and currently reports every missing remote-run, independent-
   review, and per-academy learner-journey gate. Its `--strict` mode is reserved

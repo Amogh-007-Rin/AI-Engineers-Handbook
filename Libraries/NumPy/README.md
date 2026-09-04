@@ -41,3 +41,8 @@ python -c "import numpy as np; print(np.__version__); print(np.arange(3) ** 2)"
 ```
 
 Official reference: [NumPy documentation](https://numpy.org/doc/stable/).
+
+
+## Primary sources
+
+Start with the [Primary source registry](../SOURCES.md), then cite the exact official page, version, access date, release note, or primary paper used for each version-sensitive claim.
