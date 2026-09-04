@@ -25,7 +25,10 @@ def build_report(data: pd.DataFrame):
     if not required.issubset(data.columns) or data.empty:
         raise ValueError("nonempty tidy data with group, score, and subject is required")
     fig, ax = plt.subplots(layout="constrained")
-    sns.boxplot(data=data, x="group", y="score", color="white", ax=ax)
+    sns.pointplot(
+        data=data, x="group", y="score", estimator="mean", errorbar=("pi", 50),
+        color="tab:blue", capsize=.15, markers="D", ax=ax,
+    )
     sns.stripplot(data=data, x="group", y="score", color="black", jitter=False, marker="o", ax=ax)
     ax.set(xlabel="Study group", ylabel="Score (points)", title="Score distribution by group")
     return fig, ax

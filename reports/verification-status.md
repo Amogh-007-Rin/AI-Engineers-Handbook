@@ -25,6 +25,11 @@ must be updated before a stable release claim.
 - `python3 -m unittest discover -s tests -v`: twelve validator/runner tests pass.
 - Detectron2 and MMDetection contract suites pass without compiled frameworks;
   FastAPI's four service integration tests pass in its declared environment.
+- Fresh isolated environment `/tmp/handbook-core-env` on CPython 3.14 installed
+  twelve lightweight academy requirement sets with `--no-cache-dir`; all 37
+  native project tests pass with warnings treated as errors. This clean run
+  found and fixed a Seaborn/Matplotlib pending-deprecation boundary before the
+  final rerun. The environment is disposable and is not release source.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
