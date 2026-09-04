@@ -25,6 +25,7 @@ build/
 *.onnx
 *.ckpt
 *.safetensors
+*.ses
 mlruns/
 wandb/
 artifacts/

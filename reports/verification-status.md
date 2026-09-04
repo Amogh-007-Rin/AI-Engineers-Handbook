@@ -56,6 +56,16 @@ must be updated before a stable release claim.
   Python level. ONNX Runtime logs a non-fatal native warning when it cannot
   persist its anonymous telemetry device ID under the managed read-only home;
   inference falls back to an in-memory identifier.
+- Fresh isolated CPython 3.14 NLP environment installed NLTK 3.10.3 and spaCy
+  3.8.16 with no cache reuse. All six native project tests pass with warnings
+  treated as errors, covering deterministic vocabulary construction, malformed
+  input, token contracts, character offsets, document ordering, and spaCy disk
+  round trips.
+- Gensim 4.4.0 installation was attempted in the same clean CPython 3.14
+  environment. Its source distribution fails to compile because generated C
+  code accesses CPython integer internals removed in 3.14. Gensim therefore
+  remains assigned to the repository's clean Python 3.12 NLP job; this is a
+  recorded compatibility boundary, not passing Gensim execution evidence.
 - `git diff --check` passes.
 
 ## Verification provided by repository automation
