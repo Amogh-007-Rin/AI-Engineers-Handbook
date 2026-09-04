@@ -23,12 +23,17 @@ ACADEMIES = [
     "Weights & Biases",
 ]
 
+ADDITIONAL_LABS = [
+    ("curriculum/foundations/orientation-lab", ROOT / "curriculum" / "foundations" / "00-orientation" / "lab"),
+]
+
 
 def suites():
     for name in CURRICULUM:
         yield f"curriculum/{name}", ROOT / "curriculum" / name / "project"
     for name in ACADEMIES:
         yield f"academy/{name}", ROOT / "Libraries" / name / "projects"
+    yield from ADDITIONAL_LABS
 
 
 def main():
@@ -50,7 +55,7 @@ def main():
     if failures:
         print("\n\n".join(failures), file=sys.stderr)
         return 1
-    print(f"All {len(CURRICULUM) + len(ACADEMIES)} dependency-free suites passed.")
+    print(f"All {len(CURRICULUM) + len(ACADEMIES) + len(ADDITIONAL_LABS)} dependency-free suites passed.")
     return 0
 
 
