@@ -12,9 +12,13 @@ SPEC.loader.exec_module(MODULE)
 
 
 class LessonContractAuditTests(unittest.TestCase):
-    def test_completed_foundations_lessons_pass(self):
-        root = MODULE.ROOT / "curriculum" / "foundations"
-        for relative in ("00-orientation/README.md", "01-python-foundations/README.md"):
+    def test_completed_core_lessons_pass(self):
+        root = MODULE.ROOT / "curriculum"
+        for relative in (
+            "foundations/00-orientation/README.md",
+            "foundations/01-python-foundations/README.md",
+            "mathematics/01-linear-algebra/README.md",
+        ):
             with self.subTest(relative=relative):
                 self.assertTrue(all(MODULE.evidence(root / relative).values()))
 

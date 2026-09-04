@@ -24,15 +24,16 @@ must be updated before a stable release claim.
   requirements pass, including the 14-step project ladder, 17-stage assessment
   index, graduation rubric, references, dataset practice, reproducibility, and
   contributor surfaces.
-- `python3 scripts/run_contract_tests.py`: 38/38 dependency-free suites pass
-  with warnings treated as errors—17 curriculum projects, two foundations labs,
-  and 19 academy contracts, totaling 92 tests. Its manifest is tested against
-  the complete curriculum directory set.
+- `python3 scripts/run_contract_tests.py`: 39/39 dependency-free suites pass
+  with warnings treated as errors—17 curriculum projects, three core learning
+  labs, and 19 academy contracts, totaling 100 tests. Its manifest is tested
+  against the complete curriculum directory set.
 - `python3 -m unittest discover -s tests -v`: twenty-six validator/runner tests pass.
-- `python3 scripts/audit_lesson_contracts.py`: 2/30 canonical curriculum lessons
-  currently satisfy the full authored lesson contract. The orientation and
-  Python-foundations lessons pass; the command intentionally remains non-strict
-  in CI while the other 28 are upgraded, and `--strict` is the release gate.
+- `python3 scripts/audit_lesson_contracts.py`: 3/30 canonical curriculum lessons
+  currently satisfy the full authored lesson contract. Orientation, Python
+  foundations, and linear algebra pass; the command intentionally remains
+  non-strict in CI while the other 27 are upgraded, and `--strict` is the
+  release gate.
 - `python3 scripts/audit_release_readiness.py` validates the structured release
   evidence ledger and currently reports every missing remote-run, independent-
   review, and per-academy learner-journey gate. Its `--strict` mode is reserved
@@ -143,7 +144,7 @@ commit and run URL here before marking a release stable.
 
 ## Still required for a stable world-class release
 
-- Upgrade the remaining 28 canonical curriculum lessons reported by
+- Upgrade the remaining 27 canonical curriculum lessons reported by
   `scripts/audit_lesson_contracts.py` with authored depth, runnable tested labs,
   worked examples, failures, exercises, knowledge checks, completion evidence,
   compute/accessibility guidance, and primary readings.
