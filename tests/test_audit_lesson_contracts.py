@@ -19,6 +19,7 @@ class LessonContractAuditTests(unittest.TestCase):
             "foundations/01-python-foundations/README.md",
             "mathematics/01-linear-algebra/README.md",
             "data/01-data-quality/README.md",
+            "machine-learning/01-evaluation/README.md",
         ):
             with self.subTest(relative=relative):
                 self.assertTrue(all(MODULE.evidence(root / relative).values()))
